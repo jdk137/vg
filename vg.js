@@ -8,7 +8,7 @@ vg.chartIntro = {
     tags: ["IE compatible", "IE兼容", "pie chart", "饼图", "gender", "性别"],
     depends: ["datav.js"],
     imgUrl: "TifGender.jpg",
-    demoUrl: "http://jsfiddle.net/jdk137/puVHU/",
+    jsfiddleUrl: "http://jsfiddle.net/jdk137/puVHU/8/",
     gitUrl: "https://raw.github.com/jdk137/vg/master/examples/TifGender/js/vg.chart.TifGender.js"
   },
   "TifAge": {
@@ -17,8 +17,8 @@ vg.chartIntro = {
     tags: ["IE6-8 compatible", "IE6-8兼容", "column chart", "柱状图", "age", "年龄"],
     depends: ["datav.js"],
     imgUrl: "TifAge.jpg",
-    demoUrl: "",
-    gitUrl: ""
+    jsfiddleUrl: "http://jsfiddle.net/jdk137/Dm2QH/",
+    gitUrl: "https://raw.github.com/jdk137/vg/master/examples/TifAge/js/vg.chart.TifAge.js"
   },
   "TifCareer": {
     name: "TifCareer",
@@ -26,8 +26,8 @@ vg.chartIntro = {
     tags: ["IE6-8 compatible", "IE6-8兼容", "image insert", "图片嵌入", "career", "职业"],
     depends: ["datav.js"],
     imgUrl: "TifCareer.jpg",
-    demoUrl: "",
-    gitUrl: ""
+    jsfiddleUrl: "http://jsfiddle.net/jdk137/GAsBX/",
+    gitUrl: "https://raw.github.com/jdk137/vg/master/examples/TifCareer/js/vg.chart.TifCareer.js"
   },
   "TifBuyerLevel": {
     name: "TifBuyerLevel",
@@ -35,8 +35,8 @@ vg.chartIntro = {
     tags: ["IE6-8 compatible", "IE6-8兼容", "bar chart", "横向比例图", "buyerLevel", "买家等级"],
     depends: ["datav.js"],
     imgUrl: "TifBuyerLevel.jpg",
-    demoUrl: "",
-    gitUrl: ""
+    jsfiddleUrl: "http://jsfiddle.net/jdk137/QfsdT/",
+    gitUrl: "https://raw.github.com/jdk137/vg/master/examples/TifBuyerLevel/js/vg.chart.TifBuyerLevel.js"
   },
   "TifConsumLevel": {
     name: "TifConsumLevel",
@@ -44,8 +44,8 @@ vg.chartIntro = {
     tags: ["IE6-8 compatible", "IE6-8兼容", "bar chart", "横向柱状图", "consumLevel", "消费层级"],
     depends: ["datav.js"],
     imgUrl: "TifConsumLevel.jpg",
-    deomUrl: "",
-    gitUrl: ""
+    jsfiddleUrl: "http://jsfiddle.net/jdk137/fJFvj/",
+    gitUrl: "https://raw.github.com/jdk137/vg/master/examples/TifConsumLevel/js/vg.chart.TifConsumLevel.js"
   },
   "PredictLine": {
     name: "PredictLine",
@@ -53,8 +53,8 @@ vg.chartIntro = {
     tags: ["IE6-8 uncompatible", "IE6-8不兼容", "line chart", "线图", "predictLine", "趋势预测图"],
     depends: ["d3.js"],
     imgUrl: "PredictLine.jpg",
-    deomUrl: "",
-    gitUrl: ""
+    jsfiddleUrl: "http://jsfiddle.net/jdk137/gzFK3/",
+    gitUrl: "https://raw.github.com/jdk137/vg/master/examples/PredictLine/js/vg.chart.PredictLine.js"
   },
   "SparkLine": {
     name: "SparkLine",
@@ -62,8 +62,8 @@ vg.chartIntro = {
     tags: ["IE6-8 uncompatible", "IE6-8不兼容", "line chart", "线图", "火花线", "sparkLine"],
     depends: ["d3.js"],
     imgUrl: "SparkLine.jpg",
-    deomUrl: "",
-    gitUrl: ""
+    jsfiddleUrl: "http://jsfiddle.net/jdk137/kRfxC/",
+    gitUrl: "https://raw.github.com/jdk137/vg/master/examples/SparkLine/js/vg.chart.SparkLine.js"
   },
   "DynamicMasterDetailMultiLine": {
     name: "DynamicMasterDetailMultiLine",
@@ -71,8 +71,8 @@ vg.chartIntro = {
     tags: ["IE6-8 uncompatible", "IE6-8不兼容", "line chart", "线图", "DynamicMasterDetailMultiLine", "交互多曲线趋势图"],
     depends: ["highcharts.js", "jquery.js"],
     imgUrl: "DynamicMasterDetailMultiLine.jpg",
-    deomUrl: "",
-    gitUrl: ""
+    jsfiddleUrl: "http://jsfiddle.net/jdk137/r7gku/",
+    gitUrl: "https://raw.github.com/jdk137/vg/master/examples/DynamicMasterDetailMultiLine/js/vg.chart.DynamicMasterDetailMultiLine.js"
   }
 };
 }());

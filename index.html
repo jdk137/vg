@@ -28,6 +28,10 @@ display: inline-block;
 margin: 5px;
 background-color: #ddd;
 }
+.chartIntro a {
+display: inline-block;
+margin: 5px;
+}
     </style>
   </head>
   <body>
@@ -45,9 +49,9 @@ background-color: #ddd;
       html += '<p><b>标签:</b><span>' + d.tags.join("</span><span>") + '</span></p>';
       html += '<p><b>依赖库:</b><span>' + d.depends.join("</span><span>") + '</span></p>';
       html += '<p>'
-        + '<a>demo</a>'
-        + '<a>code</a>'
-        + '<a>jsfiddle调试</a>'
+        + '<a href="./examples/' + d.name + '/' + d.name + '.html">demo</a>'
+        + '<a href="' + d.gitUrl + '">代码</a>'
+        + '<a href="' + d.jsfiddleUrl + '">在线调试</a>'
         + '</p>';
       html += '</div>';
       chart.html(html);
