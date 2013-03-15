@@ -162,11 +162,7 @@
     var showSelectDeps = function () {
       var html = "";
       for (var depName in depHash) {
-        if (depName === "datav.js") {
-          html += '<span>' + depName + '(结合了jquery.js, d3.js, raphael.js)</span>';
-        } else {
-          html += '<span>' + depName + '</span>';
-        }
+        html += '<span>' + depName + '</span>';
       }
       $("p.deps").html(html);
     };
