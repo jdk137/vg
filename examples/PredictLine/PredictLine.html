@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="../../deps/d3.v3.js"></script>
+    <script type="text/javascript" src="../../vg.js"></script>
+    <script type="text/javascript" src="./js/vg.chart.PredictLine.js"></script>
+    <style>
+      #chart {
+        border: solid 1px;
+        width: 340px;
+        height: 140px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="chart"></div>
+    <script>
+      /* test
+      var top2 = Math.round(100000 * Math.random()) + 100;
+      var data = d3.range(8).map(function (d, i) {
+            return {name: i + 1, value: Math.round(top2 * Math.random())};
+          });
+      */
+      var b = new vg.chart.PredictLine({
+          container: "chart",
+          width: 340,
+          height: 140,
+          data: /*data,*/ [
+            {name: "14", value: 5000},
+            {name: "15", value: 10000},
+            {name: "16", value: 4000},
+            {name: "17", value: 7000},
+            {name: "18", value: 9000},
+            {name: "19", value: 13000},
+            {name: "20", value: 20000},
+            {name: "21", value: 30000}
+          ],
+          margin: {
+            top: 11,
+            bottom: 21,
+            left: 15,
+            right: 15 
+          }
+      });
+    </script>
+
+</body></html>

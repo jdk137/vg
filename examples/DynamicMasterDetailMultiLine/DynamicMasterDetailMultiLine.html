@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="../../deps/jquery-1.7.1.js"></script>
+    <script type="text/javascript" src="../../deps/highcharts.js"></script>
+    <script type="text/javascript" src="../../vg.js"></script>
+    <script type="text/javascript" src="./js/vg.chart.DynamicMasterDetailMultiLine.js"></script>
+    <style>
+      #chart {
+        border: solid 1px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="chart"></div>
+    <script>
+      var b = new vg.chart.DynamicMasterDetailMultiLine({
+        "container": "chart",
+        "width": 600, //"100%", //800
+        "height": 400,
+        "masterHeight": 80,
+        "legendWidth": 200,
+        "margin": {
+          top: 20,
+          left: 50,
+          right: 20,
+          bottom: 20
+        },
+        //day interval
+        "endTime": "2012-12-31", // end time
+        "pointInterval": 24 * 3600 * 1000, // time interval is one day. //default is one day, if need different time interval, then set 1000: 1s, 1000*60: 1m, 1000*3600: 1h, 1000*3600: 1d;
+        /*
+        //hour interval exmaple
+        "endTime": 'Fri Mar 27 12:59:59 UTC+0000 2009',
+        "pointInterval": 3600 * 1000,
+        */
+        "masterPeriod": 30, // 30 time intervals, be same as data length
+        "detailPeriod": 7, // 7 time intervals in detail at first
+        "data":[
+          {
+            "name": "PV",
+            "data": [null, null, 4547, 6941, 12833, 20823, 26809, 28402, 31548, 30700, 31156, 25939, 17725, 33680, 35936, 36483, 35246, 34795, 28052, 21050, 37460, 39018, 37965, 39070, 40819, 32862, 25078, 41771, 41145, 39912] // null if no data
+          },
+          {
+            "name": "UV",
+            "data": [null, null, 683, 922, 1658, 2337, 2908, 3206, 3354, 3430, 3418, 2884, 2056, 3607, 3794, 3782, 3776, 3710, 3184, 2508, 3973, 4032, 4097, 4196, 4383, 3527, 2934, 4326, 4339, 4369]
+          }
+        ],
+        "title": "页面流量",
+        "subtitle": '在底下的图表上拖拽选择时间段'
+      });
+    </script>
+
+</body></html>

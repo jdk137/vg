@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="../../deps/datav.js"></script>
+    <script type="text/javascript" src="../../vg.js"></script>
+    <script type="text/javascript" src="./js/vg.chart.TifGender.js"></script>
+  </head>
+  <body>
+    <div id="chart"></div>
+    <script>
+
+      $("#chart").css({
+        "border": "solid 1px",
+        "width": "326px",
+        "height": "190px"
+      });
+
+      var b = new vg.chart.TifGender({
+          container: "chart",
+          width: 326,
+          height: 190,
+          data: [
+            {name: "男", value: 34, color: "#3fa9f5"},
+            {name: "女", value: 66, color: "#ff88a2"}
+          ],
+          margin: {
+            top: 50,
+            bottom: 30,
+            left: 20,
+            right: 20
+          }
+      });
+    </script>
+
+</body></html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="deps/datav.js"></script>
+    <!-- datav.js combines d3.js, raphael.js and jquery.js together -->
+    <script type="text/javascript" src="deps/highcharts.js"></script>
+    <script type="text/javascript" src="vg.js"></script>
+    <style>
+#main {
+  position: relative;
+}
+.chart {
+  border: solid 1px;
+  float: left;
+  width: 300px;
+  height: 300px;
+  margin: 5px;
+}
+.chartIntro {
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 100%;
+  height: 300px;
+  font-size: 14px;
+}
+.chartIntro span{
+display: inline-block;
+margin: 5px;
+background-color: #ddd;
+}
+    </style>
+  </head>
+  <body>
+    <div id="main"></div>
+    <script>
+    var main = $("#main");
+    for (var chart in vg.chartIntro) {
+      var d = vg.chartIntro[chart];
+      var html = "";
+      var imgUrl = './examples/' + d.name + '/img/' + d.imgUrl;
+      var chart = $('<div class="chart" style="background:url(' + imgUrl + ') no-repeat center center; width: 300px; height: 300px;"/>');
+      html += '<div class="chartIntro">';
+      html += '<h4 align="center">' + d.name + '</h4>';
+      html += '<p><b>简介:</b>' + d.description + '</p>';
+      html += '<p><b>标签:</b><span>' + d.tags.join("</span><span>") + '</span></p>';
+      html += '<p><b>依赖库:</b><span>' + d.depends.join("</span><span>") + '</span></p>';
+      html += '<p>'
+        + '<a>demo</a>'
+        + '<a>code</a>'
+        + '<a>jsfiddle调试</a>'
+        + '</p>';
+      html += '</div>';
+      chart.html(html);
+      chart.appendTo(main);
+    };
+    $(".chartIntro").css({"opacity": 0.01});
+    $(".chartIntro").on("mouseover", function () {
+        $(this).css({"opacity": 1});
+    });
+    $(".chartIntro").on("mouseout", function () {
+        $(this).css({"opacity": 0.01});
+    });
+
+    </script>
+
+</body></html>

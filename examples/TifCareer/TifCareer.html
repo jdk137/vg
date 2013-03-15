@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="../../deps/datav.js"></script>
+    <script type="text/javascript" src="../../vg.js"></script>
+    <script type="text/javascript" src="./js/vg.chart.TifCareer.js"></script>
+  </head>
+  <body>
+    <div id="chart"></div>
+    <script>
+
+      $("#chart").css({
+        "border": "solid 1px",
+        "width": "326px",
+        "height": "190px"
+      });
+
+      var path = "./img/";
+      var b = new vg.chart.TifCareer({
+          container: "chart",
+          width: 326,
+          height: 190,
+          data: [
+            {name: "白领", value: 54, color: "#ff88a2", img: path + "tifCareerWhiteCollar.png"},
+            {name: "学生", value: 34, color: "#3fa9f5", img: path + "tifCareerStudent.png"},
+            {name: "公务员", value: 1.4, color: "#94b0ff", img: path + "tifCareerCivilServant.png"},
+            {name: "自由职业", value: 5.3, color: "#909de0", img: path + "tifCareerFreelancer.png"}
+          ],
+          imgBox: {w: 20, h: 50},
+          imgCopies: [3, 2, 1, 1],
+          margin: {
+            top: 110,
+            bottom: 30,
+            left: 30,
+            right: 40
+          }
+      });
+    </script>
+
+</body></html>

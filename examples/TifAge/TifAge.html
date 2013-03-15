@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="../../deps/datav.js"></script>
+    <script type="text/javascript" src="../../vg.js"></script>
+    <script type="text/javascript" src="./js/vg.chart.TifAge.js"></script>
+  </head>
+  <body>
+    <div id="chart"></div>
+    <script>
+
+      $("#chart").css({
+        "border": "solid 1px",
+        "width": "326px",
+        "height": "190px"
+      });
+
+      var b = new vg.chart.TifAge({
+          container: "chart",
+          width: 326,
+          height: 190,
+          data: [
+              {name: "18", value: 54, color: "#ff88a2"},
+              {name: "25", value: 34, color: "#ff88a2"},
+              {name: "30", value: 11.4, color: "#909de0"},
+              {name: "35", value: 5.3, color: "#909dd0"},
+              {name: "40", value: 4.3, color: "#3fa9f5"},
+              {name: "50", value: 3.3, color: "#3fa9f5"},
+              {name: "60", value: 2.1, color: "#3fa9f5"}
+          ],
+          namePosition: "left", //"middle",
+          margin: {
+            top: 80,
+            bottom: 40,
+            left: 30,
+            right: 30
+          }
+      });
+    </script>
+
+</body></html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="../../deps/datav.js"></script>
+    <script type="text/javascript" src="../../vg.js"></script>
+    <script type="text/javascript" src="./js/vg.chart.TifConsumLevel.js"></script>
+  </head>
+  <body>
+    <div id="chart"></div>
+    <script>
+
+      $("#chart").css({
+        "border": "solid 1px",
+        "width": "326px",
+        "height": "190px"
+      });
+
+      var b = new vg.chart.TifConsumLevel({
+          container: "chart",
+          width: 326,
+          height: 190,
+          data: [
+              {name: "高", value: 54, color: "#ff88a2"},
+              {name: "偏高", value: 34, color: "#ff88a2"},
+              {name: "中", value: 11.4, color: "#909de0"},
+              {name: "偏低", value: 5.3, color: "#3fa9f5"},
+              {name: "低", value: 4.3, color: "#3fa9f5"}
+          /*
+              {name: "高", value: 0, color: "#ff88a2"},
+              {name: "偏高", value: 0, color: "#ff88a2"},
+              {name: "中", value: 0, color: "#909dd0"},
+              {name: "偏低", value: 0, color: "#3fa9f5"},
+              {name: "低", value: 0, color: "#3fa9f5"}
+              */
+          ],
+          margin: {
+            top: 40,
+            bottom: 30,
+            left: 60,
+            right: 90
+          }
+      });
+    </script>
+
+</body></html>
