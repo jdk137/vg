@@ -5,7 +5,7 @@ vg.chartIntro = {
   "TifGender": {
     name: "TifGender",
     description: "男女比例饼图， 可修改用来描述两个数据的占比关系。",
-    tags: ["IE compatible", "IE兼容", "pie chart", "饼图", "gender", "性别"],
+    tags: ["IE6-8 compatible", "IE6-8兼容", "pie chart", "饼图", "gender", "性别"],
     depends: ["datav.js"],
     imgUrl: "TifGender.jpg",
     jsfiddleUrl: "http://jsfiddle.net/jdk137/puVHU/8/",

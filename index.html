@@ -24,44 +24,197 @@
   font-size: 14px;
 }
 .chartIntro span{
-display: inline-block;
-margin: 5px;
-background-color: #ddd;
+  display: inline-block;
+  margin: 5px;
+  background-color: #ddd;
 }
 .chartIntro a {
-display: inline-block;
-margin: 5px;
+  display: inline-block;
+  margin: 5px;
+}
+.tags span {
+  display: inline-block;
+  margin: 5px;
+  background-color: #ddd;
+  font-color: black;
+  cursor: pointer;
+}
+.tags span.selected {
+  display: inline-block;
+  margin: 5px;
+  background-color: black;
+  color: #fff;
+}
+.deps span {
+  display: inline-block;
+  margin: 5px;
+  background-color: #ddd;
+  font-color: black;
+  cursor: pointer;
+}
+.deps span.selected {
+  display: inline-block;
+  margin: 5px;
+  background-color: black;
+  color: #fff;
 }
     </style>
   </head>
   <body>
+    <h2>visual Gadgets (可视化小工具)</h2>
+    <h3>定制的可视化小组件。各组件功能非常精简，代码逻辑简单，便于修改源码以实现更高级的可视化功能。</h3>
+    <h4>github地址： <a href="https://github.com/jdk137/vg">https://github.com/jdk137/vg</a>, 点击ZIP按钮可下载全部源码。</h4>
+    <h4>License: 默认MIT. 依赖highcharts.js的组件请参考highcharts的License: <a href="http://shop.highsoft.com/highcharts.html">http://shop.highsoft.com/highcharts.html</a></h4>
+    <p><b>标签筛选:</b></p>
+    <p class="tags"><p>
+    <p><b>依赖库筛选:</b></p>
+    <p class="deps"><p>
     <div id="main"></div>
     <script>
     var main = $("#main");
-    for (var chart in vg.chartIntro) {
-      var d = vg.chartIntro[chart];
-      var html = "";
-      var imgUrl = './examples/' + d.name + '/img/' + d.imgUrl;
-      var chart = $('<div class="chart" style="background:url(' + imgUrl + ') no-repeat center center; width: 300px; height: 300px;"/>');
-      html += '<div class="chartIntro">';
-      html += '<h4 align="center">' + d.name + '</h4>';
-      html += '<p><b>简介:</b>' + d.description + '</p>';
-      html += '<p><b>标签:</b><span>' + d.tags.join("</span><span>") + '</span></p>';
-      html += '<p><b>依赖库:</b><span>' + d.depends.join("</span><span>") + '</span></p>';
-      html += '<p>'
-        + '<a href="./examples/' + d.name + '/' + d.name + '.html">demo</a>'
-        + '<a href="' + d.gitUrl + '">代码</a>'
-        + '<a href="' + d.jsfiddleUrl + '">在线调试</a>'
-        + '</p>';
-      html += '</div>';
-      chart.html(html);
-      chart.appendTo(main);
+    var selectCharts = [];
+    var selectTags = [];
+    var tagHash = {};//key: tag string, value: chartName;
+    var chartTagHash = {}; //key: chartName, value: {}[key:tag string, value : 1].
+    var selectDeps = [];
+    var depHash = {};//key: tag string, value: chartName;
+    var chartDepHash = {}; //key: chartName, value: {}[key:tag string, value : 1].
+    for (var chartName in vg.chartIntro) {
+      var h = chartTagHash[chartName] = {};
+      var tags = vg.chartIntro[chartName].tags;
+      tags.forEach(function (d, i) {
+        h[d] = 1;
+        var chartList = tagHash[d];
+        if (typeof chartList === 'undefined') {
+          tagHash[d] = [chartName];
+        } else {
+          chartList.push(chartName);
+        }
+      });
+      var h2 = chartDepHash[chartName] = {};
+      var deps = vg.chartIntro[chartName].depends;
+      deps.forEach(function (d, i) {
+        h2[d] = 1;
+        var chartList = depHash[d];
+        if (typeof chartList === 'undefined') {
+          depHash[d] = [chartName];
+        } else {
+          chartList.push(chartName);
+        }
+      });
+    }
+    var getSelectCharts = function () {
+      var charts = [];
+      if (selectTags.length === 0 && selectDeps.length === 0) {
+        //all
+        for (var chartName in vg.chartIntro) {
+          charts.push(chartName);
+        }
+      } else {
+        //some
+        for (var chartName in vg.chartIntro) {
+          var h = chartTagHash[chartName];
+          var h2 = chartDepHash[chartName];
+          var tagOK = selectTags.every(function (d, i) {
+            return h[d] === 1 ? true : false;
+          });
+          var depOK = selectDeps.every(function (d, i) {
+            return h2[d] === 1 ? true : false;
+          }); 
+          if (tagOK && depOK) {
+            charts.push(chartName);
+          }
+        }
+      }
+      return charts;
     };
-    $(".chartIntro").css({"opacity": 0.01});
-    $(".chartIntro").on("mouseover", function () {
+    var showSelectCharts = function (selectCharts) {
+      $("#main").empty();
+      selectCharts.forEach(function (chartName, i) {
+        var d = vg.chartIntro[chartName];
+        var html = "";
+        var imgUrl = './examples/' + d.name + '/img/' + d.imgUrl;
+        var chart = $('<div class="chart" style="background:url(' + imgUrl + ') no-repeat center center; width: 300px; height: 300px;"/>');
+        html += '<div class="chartIntro">';
+        html += '<h4 align="center">' + d.name + '</h4>';
+        html += '<p><b>简介:</b>' + d.description + '</p>';
+        html += '<p><b>标签:</b><span>' + d.tags.join("</span><span>") + '</span></p>';
+        html += '<p><b>依赖库:</b><span>' + d.depends.join("</span><span>") + '</span></p>';
+        html += '<p>'
+          + '<a href="./examples/' + d.name + '/' + d.name + '.html">demo</a>'
+          + '<a href="' + d.gitUrl + '">代码</a>'
+          + '<a href="' + d.jsfiddleUrl + '">在线调试</a>'
+          + '</p>';
+        html += '</div>';
+        chart.html(html);
+        chart.appendTo(main);
+      });
+      $(".chartIntro").css({"opacity": 0.01});
+    };
+
+    var showSelectTags = function () {
+      var html = "";
+      for (var tagName in tagHash) {
+        html += '<span>' + tagName + '</span>';
+      }
+      $("p.tags").html(html);
+    };
+    var showSelectDeps = function () {
+      var html = "";
+      for (var depName in depHash) {
+        if (depName === "datav.js") {
+          html += '<span>' + depName + '(结合了jquery.js, d3.js, raphael.js)</span>';
+        } else {
+          html += '<span>' + depName + '</span>';
+        }
+      }
+      $("p.deps").html(html);
+    };
+
+    var refresh = function () {
+      selectCharts = getSelectCharts();
+      showSelectCharts(selectCharts);
+    };
+
+    //init
+    showSelectTags();
+    showSelectDeps();
+    refresh();
+
+    $("p.tags").on("click", "span", function () {
+      var tagName = $(this).html();
+      console.log("class " + $(this).attr('class'));
+      if ($(this).attr('class') !== "selected") {
+        $(this).addClass("selected");
+        selectTags.push(tagName);
+      } else {
+        $(this).removeClass("selected");
+        selectTags = selectTags.filter(function (d) {
+          return d !== tagName;
+        });
+      }
+      console.log(selectTags);
+      refresh();
+    });
+    $("p.deps").on("click", "span", function () {
+      var depName = $(this).html();
+      console.log("class " + $(this).attr('class'));
+      if ($(this).attr('class') !== "selected") {
+        $(this).addClass("selected");
+        selectDeps.push(depName);
+      } else {
+        $(this).removeClass("selected");
+        selectDeps = selectDeps.filter(function (d) {
+          return d !== depName;
+        });
+      }
+      console.log(selectDeps);
+      refresh();
+    });
+    $("#main").on("mouseover", ".chartIntro", function () {
         $(this).css({"opacity": 1});
     });
-    $(".chartIntro").on("mouseout", function () {
+    $("#main").on("mouseout", ".chartIntro", function () {
         $(this).css({"opacity": 0.01});
     });
 
